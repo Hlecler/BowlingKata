@@ -4,20 +4,20 @@ import org.scalatest.{FunSpec, Matchers}
 
 class BowlingSpec extends FunSpec with Matchers {
 
-  it("should return an Int between 0 and 300") {
+  it("should make a game with a score between 0 and 300") {
     val bowling = BowlingGame()
     val finishedBowling = BowlingGame.playGame(bowling)
     assert(finishedBowling.score >= 0 && finishedBowling.score <= 300)
   }
 
-  it("should return 0 if you only roll gutter") {
+  it("should make a game with a score of 0 if you only roll gutter") {
     val bowling = BowlingGame()
     val finishedBowling = BowlingGame.roll(bowling, 0, 0)
     assert(bowling.score == 0 && bowling.frameNumber == 1)
     assert(finishedBowling.score == 0 && finishedBowling.frameNumber == 2)
   }
 
-  it("should return 300 if you only roll strikes") {
+  it("should make a game with a score of 300 if you only roll strikes") {
     val bowling = BowlingGame()
     val finishedBowling = BowlingGame.roll(bowling, 10, 0)
     assert(bowling.score == 0 && bowling.frameNumber == 1)
@@ -31,9 +31,11 @@ class BowlingSpec extends FunSpec with Matchers {
   }
 
   it("shoukd make a Spare if you roll a 10 on the second shot") {
-    val frame = Frame(0,10)
-    val frameWithStatus = Frame.attributeStatus(frame)
-    assert(frameWithStatus.status == "spare")
+    val frame1 = Frame(0,10)
+    val frameWithStatus1 = Frame.attributeStatus(frame1)
+    val frame2 = Frame(9,10)
+    val frameWithStatus2 = Frame.attributeStatus(frame2)
+    assert(frameWithStatus1.status == "spare" && frameWithStatus2.status == "spare")
   }
 
   it("shouldn't make a particular shot if you don't roll a 10 on either shot") {
