@@ -1,0 +1,15 @@
+.idea
+*.class
+out
+*.xml
+*.iml
+libexec/
+lib_managed/
+src_managed/
+project/boot/
+project/plugins/project/
+logs/
+project/*-shim.sbt
+project/project/
+project/target/
+target/
